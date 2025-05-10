@@ -24,7 +24,7 @@
 
     .lang-select {
       position: absolute;
-      top: -8px; /* bouton déplacé plus haut */
+      top: -8px;
     }
 
     body[dir="ltr"] .lang-select {
@@ -88,9 +88,10 @@
       background-color: #fff;
       border-radius: 10px;
       padding: 15px;
-      width: 300px;
+      width: 280px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s;
+      text-align: left;
     }
 
     .product:hover {
@@ -99,8 +100,8 @@
 
     .product img {
       width: 100%;
-      height: 200px;
-      object-fit: contain;
+      height: 100px;
+      object-fit: cover;
       background-color: #eee;
       border-radius: 6px;
     }
@@ -131,6 +132,20 @@
     .contact-btn:hover {
       background-color: #218838;
     }
+
+    .product-images {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-images img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+
   </style>
 </head>
 <body dir="ltr">
@@ -157,33 +172,131 @@
   <div class="container" id="productsContainer">
     <div class="product">
       <a href="mouchoir.html">
-        <img src="photo/mouchoir.jpg" alt="Image">
+        <div class="product-images">
+          <img src="photo/mouchoir.jpg" alt="Image 1">
+        </div>
       </a>
       <h3>MOUCHOIR 600 feuille</h3>
       <p class="price-placeholder"></p>
     </div>
 
     <div class="product">
-      <img src="#" alt="Image">
-      <h3>Papier Cuisson - 12m / 20m / 50m</h3>
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Papier Cuisson 12m blanc</h3>
       <p class="price-placeholder"></p>
     </div>
 
     <div class="product">
-      <img src="#" alt="Image">
-      <h3>Film Cellophane - Toutes tailles</h3>
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Papier Cuisson 12m marron</h3>
       <p class="price-placeholder"></p>
     </div>
 
     <div class="product">
-      <img src="#" alt="Image">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Papier Cuisson 20m blanc</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Papier Cuisson 20m marron</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Papier Cuisson 50m blanc</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Papier Cuisson 50m marron</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane 1 kg simple</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane 1 kg super</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane mini</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane extra</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane supreme</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
       <h3>Vinaigre Blanc</h3>
       <p class="price-placeholder"></p>
     </div>
 
     <div class="product">
-      <img src="#" alt="Image">
-      <h3>Bicarbonate de Soude - Toutes tailles</h3>
+      <div class="product-images">
+        <img src="photo/b.c500g.jpg" alt="Image 1">
+      </div>
+      <h3>Bicarbonate de Soude 500g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="photo/b.c1125g.jpg" alt="Image 1">
+      </div>
+      <h3>Bicarbonate de Soude 1225g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product">
+      <div class="product-images">
+        <img src="photo/b.c200g.jpg" alt="Image 1">
+      </div>
+      <h3>Bicarbonate de Soude 200g</h3>
       <p class="price-placeholder"></p>
     </div>
   </div>
