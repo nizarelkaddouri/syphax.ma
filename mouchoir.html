@@ -22,7 +22,6 @@
       position: relative;
     }
 
-    /* زر الرجوع */
     .back-btn {
       position: absolute;
       top: 20px;
@@ -131,55 +130,41 @@
       background-color: #218838;
     }
 
-    #total {
-      font-size: 18px;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    #unitPrice {
-      font-size: 16px;
-      color: #666;
-    }
-
-    #note {
-      margin-top: 15px;
-      font-size: 14px;
-      font-style: italic;
-      color: #555;
-    }
-
     header a {
-      background-color: red; /* جعل الخلفية شفافة */
-      color: white; /* لون النص أبيض */
+      background-color: red;
+      color: white;
       padding: 10px 20px;
-      border: 2px solid #dc3545; /* إضافة إطار أحمر حول الزر */
-      border-radius: 5px; /* حواف دائرية */
+      border: 2px solid #dc3545;
+      border-radius: 5px;
       font-size: 16px;
       text-decoration: none;
-      display: flex; /* جعل الزر عنصر فليكس */
-      align-items: center; /* محاذاة النص عموديًا */
-      justify-content: center; /* محاذاة النص أفقيًا في الوسط */
-      width: 60px; /* عرض الزر 60px */
-      height: 20px; /* طول الزر 30px */
-      text-align: center; /* محاذاة النص في المنتصف */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 20px;
+      text-align: center;
     }
 
     header a:hover {
-      background-color: #dc3545; /* تغيير الخلفية إلى الأحمر عند التمرير */
-      color: white; /* النص يبقى باللون الأبيض عند التمرير */
-      width: 60px; /* عرض الزر يبقى ثابتًا */
-      height: 30px; /* طول الزر يبقى ثابتًا */
+      background-color: #dc3545;
+      color: white;
+      width: 60px;
+      height: 30px;
+    }
+
+    .total-price {
+      margin-top: 20px;
+      font-size: 20px;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
     }
 
   </style>
 </head>
 <body dir="ltr">
   <header>
-    <!-- Button Retour -->
-    <a href="index.html" class="back-btn">
-      Retour
-    </a>
+    <a href="index.html" class="back-btn">Retour</a>
 
     <div class="lang-select">
       <select id="languageSwitcher" onchange="switchLanguage()">
@@ -202,19 +187,9 @@
       <label id="quantityLabel">Quantité:</label>
       <select id="quantitySelect"></select>
 
-      <div id="unitPrice">Prix unitaire: 6.75 MAD</div>
-      <div id="total">Total: 0 MAD</div>
+      <div class="total-price" id="totalPrice"> total: 0 Unite</div>
 
-      <div id="note">
-        À mesure que la quantité augmente, le prix diminue.<br>
-        .24*5-14*24 = 6,75 MAD.<br>
-        .24*15-29*24 = 6,6 MAD.<br>
-        . 24*30-40*24 = 6,5 MAD.
-      </div>
-
-      <a href="#" class="order-btn" id="orderBtn" target="_blank">
-        Commander maintenant
-      </a>
+      <a href="#" class="order-btn" id="orderBtn" target="_blank">Commander maintenant</a>
     </div>
   </div>
 
@@ -225,11 +200,9 @@
     const quantitySelect = document.getElementById('quantitySelect');
     const productName = document.getElementById('productName').textContent;
     const orderBtn = document.getElementById('orderBtn');
-    const totalDisplay = document.getElementById('total');
-    const unitPriceDisplay = document.getElementById('unitPrice');
-    const quantityLabel = document.getElementById('quantityLabel');
     const whatsappLink = document.getElementById('whatsappLink');
     const emailLink = document.getElementById('emailLink');
+    const totalPrice = document.getElementById('totalPrice');
 
     // Remplir les options avec 5*24 jusqu’à 40*24
     for (let i = 5; i <= 40; i++) {
@@ -239,50 +212,19 @@
       quantitySelect.appendChild(opt);
     }
 
-    // Fonction pour calculer le prix total selon la quantité sélectionnée
-    function calculatePrice(quantity) {
-      let pricePerUnit;
-      if (quantity >= 5 && quantity <= 14) {
-        pricePerUnit = 6.75;
-      } else if (quantity >= 15 && quantity <= 29) {
-        pricePerUnit = 6.6;
-      } else if (quantity >= 30 && quantity <= 40) {
-        pricePerUnit = 6.5;
-      }
-
-      unitPriceDisplay.textContent = `Prix unitaire: ${pricePerUnit} MAD`;
-      return pricePerUnit * quantity * 24;
-    }
-
-    // Fonction pour arrondir les résultats à 2 décimales
-    function roundToTwoDecimalPlaces(num) {
-      return Math.round(num * 100) / 100;
-    }
-
-    function updateWhatsAppLink() {
+    const pricePerUnit = 24; // Le prix pour chaque unité de 24
+    function updatePriceAndLink() {
       const quantity = parseInt(quantitySelect.value);
-      let pricePerUnit = 6.75; // Valeur par défaut pour le calcul initial
-      let total = calculatePrice(quantity);
-      total = roundToTwoDecimalPlaces(total);  // Arrondi du total
+      const total = quantity * pricePerUnit;
+      totalPrice.textContent = `total: ${total} Unite`;
 
-      // Mise à jour de l'unité de prix en fonction de la quantité
-      if (quantity >= 5 && quantity <= 14) {
-        pricePerUnit = 6.75;
-      } else if (quantity >= 15 && quantity <= 29) {
-        pricePerUnit = 6.6;
-      } else if (quantity >= 30 && quantity <= 40) {
-        pricePerUnit = 6.5;
-      }
-
-      const message = `Bonjour, je souhaite commander ${quantity} * 24 unités de ${productName} de prix ${pricePerUnit} dh. Le total est ${total} MAD.`;
+      const message = `Bonjour, je souhaite commander ${quantity} * 24 unités de ${productName}. Le  total est ${total} unite.`;
       const url = `https://wa.me/212600020064?text=${encodeURIComponent(message)}`;
       orderBtn.href = url;
-
-      totalDisplay.textContent = `Total: ${total} MAD`;
     }
 
-    quantitySelect.addEventListener('change', updateWhatsAppLink);
-    window.onload = updateWhatsAppLink;
+    quantitySelect.addEventListener('change', updatePriceAndLink);
+    window.onload = updatePriceAndLink;
 
     function switchLanguage() {
       const lang = document.getElementById('languageSwitcher').value;
@@ -296,8 +238,6 @@
         whatsappLink.textContent = 'التواصل عبر واتساب';
         emailLink.textContent = 'إرسال بريد إلكتروني';
         orderBtn.textContent = 'اطلب الآن';
-        unitPriceDisplay.textContent = 'السعر الفردي: 6.75 درهم';
-        note.textContent = 'كلما زادت الكمية، انخفض السعر.';
       } else if (lang === 'en') {
         body.dir = 'ltr';
         siteTitle.textContent = 'Syphax | Wholesale Products';
@@ -305,8 +245,6 @@
         whatsappLink.textContent = 'Contact via WhatsApp';
         emailLink.textContent = 'Send Email';
         orderBtn.textContent = 'Order Now';
-        unitPriceDisplay.textContent = 'Unit Price: 6.75 MAD';
-        note.textContent = 'As the quantity increases, the price decreases.';
       } else {
         body.dir = 'ltr';
         siteTitle.textContent = 'Syphax produit | vendre en gros';
@@ -314,12 +252,8 @@
         whatsappLink.textContent = 'Contacter via WhatsApp';
         emailLink.textContent = 'Envoyer un e-mail';
         orderBtn.textContent = 'Commander maintenant';
-        unitPriceDisplay.textContent = 'Prix unitaire: 6.75 MAD';
-        note.textContent = 'À mesure que la quantité augmente, le prix diminue.';
       }
     }
-    
   </script>
-
 </body>
 </html>
