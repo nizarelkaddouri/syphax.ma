@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Syphax site Officiel Maroc | vendre en gros</title>
+  <link rel="website icon" type="png" href="photo/logo.jpg">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #097df0;
+      color: white;
+      padding: 20px 10px;
+      position: relative;
+    }
+
+    .lang-select {
+      position: absolute;
+      top: -8px;
+    }
+
+    body[dir="ltr"] .lang-select {
+      left: 15px;
+    }
+
+    body[dir="rtl"] .lang-select {
+      right: 15px;
+    }
+
+    .lang-select select {
+      padding: 5px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .header-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    body[dir="rtl"] .header-center {
+      flex-direction: row-reverse;
+    }
+
+    .header-center img {
+      height: 40px;
+    }
+
+    .header-center h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .search-box {
+      margin: 20px auto;
+    }
+
+    .search-box input {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: left;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      background-color: #eee;
+      border-radius: 6px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .price-placeholder {
+      color: #888;
+      font-size: 16px;
+    }
+
+    .contact-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 20px 10px;
+      text-decoration: none;
+    }
+
+    .contact-btn:hover {
+      background-color: #218838;
+    }
+
+    .product-images {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-images img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body dir="ltr">
+
+  <header>
+    <div class="lang-select">
+      <select id="languageSwitcher" onchange="switchLanguage()">
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div class="header-center">
+      <img src="photo/logo.jpg" alt="Logo">
+      <h1 id="site-title">Syphax produit | vendre en gros</h1>
+    </div>
+  </header>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Rechercher un produit..." onkeyup="searchProducts()">
+  </div>
+
+  <div class="container" id="productsContainer">
+    <div class="product" style="text-align: center;">
+      <a href="mouchoir.html">
+        <div class="product-images">
+          <img src="photo/mouchoir.jpg" alt="Image 1">
+        </div>
+      </a>
+      <h3>MOUCHOIR 600 feuille</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+       <a href="p.c12m blanc.html"> <img src="photo/p.c 12m blanc.jpg" alt="Image 1"></a> 
+      </div>
+      <h3>Papier Cuisson 12m blanc</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <a href="p.c12m marron.html"><img src="photo/p.c 12m marron.jpg" alt="Papier Cuisson 12m marron"></a>
+      </div>
+      <h3>Papier Cuisson 12m marron</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <a href="p.c20m blanc.html"><img src="photo/p.c 20m blanc.jpg" alt="Papier Cuisson 20m blanc"></a>
+      </div>
+      <h3>Papier Cuisson 20m blanc</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <a href="p.c20m marron.html"><img src="photo/p.c 20 marron.jpg" alt="Papier Cuisson 12m marron"></a>
+      </div>
+      <h3>Papier Cuisson 20m marron</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+         <a href="p.c50m blanc.html"><img src="photo/p.c 50m blanc.jpg" alt="Papier Cuisson 50m blanc"></a>
+      </div>
+      <h3>Papier Cuisson 50m blanc</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+          <a href="p.c50m marron.html"><img src="photo/p.c 50m marron.jpg" alt="Papier Cuisson 50m marron"></a>
+      </div>
+      <h3>Papier Cuisson 50m marron</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane 1 kg simple</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane 1 kg super</h3>
+      <p class="price-placeholder"></p>
+    </div>
+  <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane JUS 500g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+      <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane JUS 300g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <img src="#" alt="Image 1">
+      </div>
+      <h3>Film soulouphane mini</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+         <a href="extra.html"><img src="photo/extra.jpg" alt="Souloufane extra"></a>
+      </div>
+      <h3>Film soulouphane extra</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <a href="souloufane supreme.html"><img src="photo/supreme.jpg" alt="Image 1"></a>
+      </div>
+      <h3>Film soulouphane supreme</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+        <a href="vignaire.html"><img src="photo/Vignaire blanc.jpg" alt="Image 1"></a>
+      </div>
+      <h3>Vinaigre Blanc</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+         <a  href="b.c500g.html"><img src="photo/b.c500g.jpg" alt="Image 1"></a>
+      </div>
+      <h3>Bicarbonate de Soude 500g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images">
+       <a href="b.c1125g.html"> <img src="photo/b.c1125g.jpg" alt="Image 1"></a>
+      </div>
+      <h3>Bicarbonate de Soude 1125g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+
+    <div class="product" style="text-align: center;">
+      <div class="product-images" >
+           <a href="b.c200g.html"><img src="photo/b.c200g.jpg" alt="Image 1"> </a>
+      </div>
+      <h3>Bicarbonate de Soude 200g</h3>
+      <p class="price-placeholder"></p>
+    </div>
+  </div>
+  <a href="https://wa.me/0660573610" class="contact-btn">Contacter via WhatsApp</a>
+  <a href="mailto:kadazghar@gmail.com" class="contact-btn">Envoyer un e-mail</a>
+
+  <script>
+    function searchProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const products = document.querySelectorAll('.product');
+
+      products.forEach(function(product) {
+        const title = product.querySelector('h3').textContent.toLowerCase();
+        product.style.display = title.includes(input) ? "block" : "none";
+      });
+    }
+
+    function switchLanguage() {
+      const lang = document.getElementById('languageSwitcher').value;
+      const siteTitle = document.getElementById('site-title');
+      const searchInput = document.getElementById('searchInput');
+      const body = document.body;
+
+      if (lang === 'ar') {
+        body.dir = 'rtl';
+        siteTitle.textContent = 'سيفاكس | بيع بالجملة';
+        searchInput.placeholder = 'ابحث عن منتج...';
+      } else if (lang === 'en') {
+        body.dir = 'ltr';
+        siteTitle.textContent = 'Syphax | Wholesale Products';
+        searchInput.placeholder = 'Search a product...';
+      } else {
+        body.dir = 'ltr';
+        siteTitle.textContent = 'Syphax produit | vendre en gros';
+        searchInput.placeholder = 'Rechercher un produit...';
+      }
+    }
+  </script>
+
+</body>
+</html>
