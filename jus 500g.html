@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Syphax site Officiel Maroc | vendre en gros</title>
+  <link rel="website icon" type="image/png" href="photo/logo.jpg">
+  <style>
+    /* تنسيقات الصفحة كاملة */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #097df0;
+      color: white;
+      padding: 20px 10px;
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background-color: #d9534f;
+    }
+
+    .header-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-center img {
+      height: 40px;
+    }
+
+    .header-center h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .lang-select {
+      margin: 15px;
+    }
+
+    body[dir="ltr"] .lang-select { left: 15px; }
+    body[dir="rtl"] .lang-select { right: 15px; }
+    body[dir="rtl"] .header-center { flex-direction: row-reverse; }
+
+    .product-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      margin: 30px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      background-color: #eee;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .product-box h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .product-box label {
+      display: block;
+      margin: 15px 0;
+    }
+
+    select {
+      padding: 6px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .order-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .order-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .contact-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 20px 10px;
+      text-decoration: none;
+    }
+
+    .contact-btn:hover {
+      background-color: #218838;
+    }
+
+    .total-price {
+      margin-top: 20px;
+      font-size: 20px;
+      color: black;
+      font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      background-color: #ffffff;
+      border-radius: 30px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      background-color: #ffffff;
+      border-radius: 6px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body dir="ltr">
+  <header>
+    <a href="index.html" class="back-btn">Retour</a>
+    <div class="lang-select">
+      <select id="languageSwitcher" onchange="switchLanguage()">
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <div class="header-center">
+      <img src="photo/logo.jpg" alt="Logo">
+      <h1 id="site-title">Syphax produit | vendre en gros</h1>
+    </div>
+  </header>
+
+  <div class="product-box" id="productBox">
+    <img src="photo/jus 500g.jpg" class="product-img" alt="Souloufane super">
+    <div>
+      <h1 id="productName">souloufane jus 500g</h1>
+      <label id="quantityLabel">Quantité:</label>
+      <select id="quantitySelect"></select>
+      <div class="total-price" id="totalPrice">total: 0 Unite</div>
+      <a href="#" class="order-btn" id="orderBtn" target="_blank">Commander maintenant</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="product">
+      <a href="simple.html"><img src="photo/1kg simple.jpg" alt="Souloufane 1kg simple"></a>
+      <h3>souloufane 1kg simple</h3>
+    </div>
+    <div class="product">
+      <a href="souloufane supreme.html"><img src="photo/supreme.jpg" alt="Souloufane 1kg super"></a>
+      <h3>Souloufane supreme</h3>
+    </div>
+    <div class="product">
+      <a href="soloufane mini.html"><img src="photo/mini.jpg" alt="Souloufane mini"></a>
+      <h3>souloufane mini</h3>
+    </div>
+    <div class="product">
+      <a href="extra.html"><img src="photo/extra.jpg" alt="Souloufane extra"></a>
+      <h3>souloufane extra</h3>
+    </div>
+    <div class="product">
+      <a href="super.html"><img src="photo/1kg super.jpg" alt="Souloufane jus 300g"></a>
+      <h3>souloufane 1kg super</h3>
+    </div>
+    <div class="product">
+      <a href="jus 300g.html"><img src="photo/jus 300g.jpg" alt="Souloufane jus 500g"></a>
+      <h3>souloufane jus 300g</h3>
+    </div>
+  </div>
+
+  <a href="https://wa.me/212600020064" class="contact-btn" id="whatsappLink">Contacter via WhatsApp</a>
+  <a href="mailto:kadazghar@gmail.com" class="contact-btn" id="emailLink">Envoyer un e-mail</a>
+
+  <script>
+    const quantitySelect = document.getElementById('quantitySelect');
+    const productName = document.getElementById('productName').textContent;
+    const orderBtn = document.getElementById('orderBtn');
+    const whatsappLink = document.getElementById('whatsappLink');
+    const emailLink = document.getElementById('emailLink');
+    const totalPrice = document.getElementById('totalPrice');
+    const quantityLabel = document.getElementById('quantityLabel');
+
+    for (let i = 1; i <= 100; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${i} * 16`;
+      quantitySelect.appendChild(opt);
+    }
+
+    const pricePerUnit = 16;
+
+    function updatePriceAndLink() {
+      const quantity = parseInt(quantitySelect.value);
+      const total = quantity * pricePerUnit;
+      totalPrice.textContent = `total: ${total} Unite`;
+
+      const message = `Bonjour, je souhaite commander ${quantity} * 25 unités de ${productName}. Le  total est ${total} unite.`;
+      const url = `https://wa.me/212600020064?text=${encodeURIComponent(message)}`;
+      orderBtn.href = url;
+    }
+
+    quantitySelect.addEventListener('change', updatePriceAndLink);
+    window.onload = updatePriceAndLink;
+
+    function switchLanguage() {
+      const lang = document.getElementById('languageSwitcher').value;
+      const siteTitle = document.getElementById('site-title');
+      const body = document.body;
+
+      if (lang === 'ar') {
+        body.dir = 'rtl';
+        siteTitle.textContent = 'سيفاكس | بيع بالجملة';
+        quantityLabel.textContent = 'الكمية:';
+        whatsappLink.textContent = 'التواصل عبر واتساب';
+        emailLink.textContent = 'إرسال بريد إلكتروني';
+        orderBtn.textContent = 'اطلب الآن';
+      } else if (lang === 'en') {
+        body.dir = 'ltr';
+        siteTitle.textContent = 'Syphax | Wholesale Products';
+        quantityLabel.textContent = 'Quantity:';
+        whatsappLink.textContent = 'Contact via WhatsApp';
+        emailLink.textContent = 'Send Email';
+        orderBtn.textContent = 'Order Now';
+      } else {
+        body.dir = 'ltr';
+        siteTitle.textContent = 'Syphax produit | vendre en gros';
+        quantityLabel.textContent = 'Quantité:';
+        whatsappLink.textContent = 'Contacter via WhatsApp';
+        emailLink.textContent = 'Envoyer un e-mail';
+        orderBtn.textContent = 'Commander maintenant';
+      }
+    }
+  </script>
+</body>
+</html>
