@@ -6,7 +6,7 @@
   <title>Syphax site Officiel Maroc | vendre en gros</title>
   <link rel="website icon" type="png" href="photo/logo.jpg">
   <style>
-    body {
+  body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f4f4;
       margin: 0;
@@ -59,6 +59,10 @@
     .lang-select {
       margin: 15px;
     }
+
+    body[dir="ltr"] .lang-select { left: 15px; }
+    body[dir="rtl"] .lang-select { right: 15px; }
+    body[dir="rtl"] .header-center { flex-direction: row-reverse; }
 
     .product-box {
       background-color: #fff;
@@ -130,34 +134,48 @@
       background-color: #218838;
     }
 
-    header a {
-      background-color: red;
-      color: white;
-      padding: 10px 20px;
-      border: 2px solid #dc3545;
-      border-radius: 5px;
-      font-size: 16px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 20px;
-      text-align: center;
-    }
-
-    header a:hover {
-      background-color: #dc3545;
-      color: white;
-      width: 60px;
-      height: 30px;
-    }
-
     .total-price {
       margin-top: 20px;
       font-size: 20px;
-      color: rgb(0, 0, 0);
+      color: black;
       font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      background-color: #ffffff;
+      border-radius: 30px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      background-color: #ffffff;
+      border-radius: 6px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin: 10px 0;
     }
 
   </style>
@@ -192,7 +210,10 @@
       <a href="#" class="order-btn" id="orderBtn" target="_blank">Commander maintenant</a>
     </div>
   </div>
-
+  <div class="product">
+    <a href="servette.html"><img src="photo/servette.jpeg" alt="Papier Cuisson 12m marron"></a>
+      <h3>Mouchoir 600 feuilles</h3>
+    </div>
   <a href="https://wa.me/212600020064" class="contact-btn" id="whatsappLink">Contacter via WhatsApp</a>
   <a href="mailto:kadazghar@gmail.com" class="contact-btn" id="emailLink">Envoyer un e-mail</a>
 
