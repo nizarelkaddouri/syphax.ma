@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - KAD AZGHAR GOD MODE</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ================= BODY ================= */
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#070b14;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+
+
+/* ================= PARTICLES ================= */
+.particle{
+    position:fixed;
+    width:6px;
+    height:6px;
+    background:#00e5ff;
+    border-radius:50%;
+    animation: floatUp 10s linear infinite;
+    opacity:0.5;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(100vh);opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translateY(-10vh);opacity:0;}
+}
+/* ================= SIDEBAR ================= */
+
+.menu-icon{
+    position:fixed;
+    top:18px;
+    left:18px;
+    font-size:28px;
+    color:#f8f8f8;
+    cursor:pointer;
+    z-index:1100;
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.1);
+    color:#1e90ff;
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    opacity:0;
+    visibility:hidden;
+    transition:0.4s;
+    z-index:999;
+}
+
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* SIDEBAR */
+.sidebar{
+    position:fixed;
+    top:0;
+    left:-300px;
+    width:300px;
+    height:100%;
+    background:linear-gradient(180deg,#0a3d62,#1e90ff);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:25px 0;
+    transition:0.5s ease;
+    z-index:1000;
+    box-shadow:5px 0 25px rgba(0,0,0,0.3);
+}
+
+.sidebar.active{
+    left:0;
+}
+
+.menu-top,.menu-bottom{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+}
+
+/* LINKS */
+.sidebar a{
+    width:85%;
+    margin:7px 0;
+    padding:12px;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    position:relative;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+/* SHINE */
+.sidebar a::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.25);
+    transform:skewX(-25deg);
+    transition:0.5s;
+}
+
+.sidebar a:hover::before{
+    left:120%;
+}
+
+.sidebar a:hover{
+    transform:translateX(10px) scale(1.05);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= HEADER ================= */
+header{
+    text-align:center;
+    padding:100px 20px;
+    background: radial-gradient(circle at top,#1e3a8a,#070b14);
+    position:relative;
+    overflow:hidden;
+}
+
+header h1{
+    font-size:65px;
+    color:#00e5ff;
+    animation: glow 2s infinite alternate;
+}
+
+header p{
+    color:#aaa;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #00e5ff; }
+    to{ text-shadow:0 0 50px #00e5ff,0 0 80px #1e90ff; }
+}
+
+/* ================= GLASS CARDS ================= */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    border-radius:18px;
+    margin:20px 0;
+    box-shadow:0 0 20px rgba(0,229,255,0.1);
+    transition:0.4s;
+    opacity:0;
+    transform:translateY(40px);
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 30px #00e5ff;
+}
+
+/* ================= TITLES ================= */
+h2{
+    color:#00e5ff;
+}
+
+/* ================= STATS ================= */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,229,255,0.1);
+}
+
+.stat h1{
+    color:#00e5ff;
+    font-size:40px;
+}
+
+/* ================= TIMELINE ================= */
+.timeline{
+    position:relative;
+    margin-top:50px;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    width:4px;
+    height:100%;
+    background:#00e5ff;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    margin:40px 0;
+    position:relative;
+}
+
+.item div{
+    width:45%;
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:15px;
+}
+
+.item::after{
+    content:"";
+    position:absolute;
+    width:14px;
+    height:14px;
+    background:#00e5ff;
+    border-radius:50%;
+    left:50%;
+    top:20px;
+    transform:translateX(-50%);
+}
+
+.item:nth-child(even){
+    flex-direction:row-reverse;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#888;
+    background:#0b1220;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+    display:inline-block;
+    padding:12px 18px;
+    background:#00e5ff;
+    color:black;
+    font-weight:bold;
+    border-radius:25px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#1e90ff;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU ICON -->
+<div class="menu-icon" onclick="openMenu()">
+    <i class="fas fa-bars"></i>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- PARTICLES -->
+<script>
+for(let i=0;i<30;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(5+Math.random()*10)+"s";
+document.body.appendChild(p);
+}
+</script>
+<!-- MENU ICON -->
+<div class="menu-icon" onclick="openMenu()">
+    <i class="fas fa-bars"></i>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+    <div class="menu-top">
+    <a href="index.html">Main Menu</a>
+    <a href="mouchoir.html">Mouchoir simple</a>
+    <a href="300.html">Mouchoir 300</a>
+    <a href="premium.html">Mouchoir premium</a>
+    <a href="souloufane.html">Souloufane</a>
+    <a href="cuisson.html">Papier cuisson</a>
+    <a href="vinaigre.html">Vinaigre</a>
+    <a href="bicarbonate.html">Bicarbonate</a>
+    <a href="servette.html">Servette</a>
+</div>
+
+<div class="menu-bottom">
+    <a href="contact.html">Contact Us</a>
+    <a href="about.html">About Us</a>
+    <a href="#">Syphax Market</a>
+</div>
+
+</div>
+<!-- HEADER -->
+<header>
+<h1>KAD AZGHAR</h1>
+<p>SYPHAX MARKET - GOD LEVEL COMPANY</p>
+</header>
+
+<div class="container">
+
+<!-- ABOUT -->
+<div class="card">
+<h2>Who We Are</h2>
+<p>
+We are KAD AZGHAR, a next-generation distribution company under SYPHAX MARKET.
+We focus on quality, speed, and trust across Morocco and beyond.
+</p>
+</div>
+
+<!-- STATS -->
+<div class="card">
+<h2>Our Power</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h1>1200+</h1>
+<p>Clients</p>
+</div>
+
+<div class="stat">
+<h1>15+</h1>
+<p>Products</p>
+</div>
+
+<div class="stat">
+<h1>25+</h1>
+<p>Cities</p>
+</div>
+
+</div>
+</div>
+
+<!-- TIMELINE -->
+<div class="card">
+<h2>Our Journey</h2>
+
+<div class="timeline">
+
+<div class="item">
+<div>
+<h3>Start</h3>
+<p>Small local distribution business.</p>
+</div>
+</div>
+
+<div class="item">
+<div>
+<h3>Growth</h3>
+<p>Expansion across multiple cities in Morocco.</p>
+</div>
+</div>
+
+<div class="item">
+<div>
+<h3>Future</h3>
+<p>International expansion and global partnerships.</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- CTA -->
+<div class="card" style="text-align:center;">
+<h2>Work With Us</h2>
+<a class="btn" href="contact.html">Contact Us</a>
+</div>
+
+</div>
+
+<footer>
+© 2026 KAD AZGHAR | SYPHAX MARKET
+</footer>
+
+<!-- SCROLL ANIMATION -->
+<script>
+let cards=document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+cards.forEach(c=>{
+let top=c.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+c.classList.add("show");
+}
+});
+});
+</script>
+
+</body>
+</html>

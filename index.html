@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYPHAX</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #f5f5f5, #e8f0ff);
+}
+
+/* MENU */
+.menu-icon{
+    position:fixed;
+    top:18px;
+    left:18px;
+    font-size:28px;
+    color:#fff;
+    cursor:pointer;
+    z-index:1100;
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.1);
+    color:#1e90ff;
+}
+
+/* SIDEBAR */
+.sidebar{
+    position:fixed;
+    top:0;
+    left:-300px;
+    width:300px;
+    height:100%;
+    background:linear-gradient(180deg,#0a3d62,#1e90ff);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:25px 0;
+    transition:0.5s ease;
+    z-index:1000;
+    box-shadow:5px 0 25px rgba(0,0,0,0.3);
+}
+
+.sidebar.active{left:0;}
+
+.menu-top,.menu-bottom{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+}
+
+.sidebar a{
+    width:85%;
+    margin:7px 0;
+    padding:12px;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.sidebar a:hover{
+    transform:translateX(10px) scale(1.05);
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#0a3d62,#1e90ff);
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    position:relative;
+}
+
+/* LOGO */
+.logo{
+    width:110px;
+    height:110px;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+    margin:0 auto 10px auto;
+    border:3px solid rgba(255,255,255,0.4);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+header h1{
+    margin:0;
+    font-size:40px;
+}
+
+/* PRODUCTS */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+.product-img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 15px;
+    background:linear-gradient(135deg,#1e90ff,#00c6ff);
+    color:white;
+    border-radius:20px;
+    text-decoration:none;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(30,144,255,0.4);
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.3);
+    transform:skewX(-25deg);
+    transition:0.5s;
+}
+
+.btn:hover::before{ left:120%; }
+
+.btn:hover{
+    transform:scale(1.1);
+}
+
+/* LOCATION */
+.location{
+    text-align:center;
+    padding:30px;
+}
+
+.location iframe{
+    width:90%;
+    max-width:700px;
+    height:300px;
+    border:0;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* BUTTON */
+.map-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 25px;
+    font-weight:bold;
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    background:linear-gradient(135deg,#1e90ff,#00c6ff,#0a3d62);
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    animation:floatBtn 2.5s ease-in-out infinite;
+}
+
+@keyframes floatBtn{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    padding:30px;
+}
+
+.contact a{
+    margin:8px;
+    padding:12px 18px;
+    border-radius:30px;
+    color:white;
+    text-decoration:none;
+}
+
+.whatsapp{background:#25D366;}
+.gmail{background:#EA4335;}
+.facebook{background:#1877F2;}
+.instagram{background:linear-gradient(45deg,#feda75,#d62976,#962fbf);}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    background:#0a3d62;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
+<div class="sidebar" id="sidebar">
+
+<div class="menu-top">
+<a href="index.html">Main Menu</a>
+<a href="mouchoir.html">Mouchoir simple</a>
+<a href="300.html">Mouchoir 300</a>
+<a href="premium.html">Mouchoir premium</a>
+<a href="souloufane.html">Souloufane</a>
+<a href="cuisson.html">Papier cuisson</a>
+<a href="vinaigre.html">Vinaigre</a>
+<a href="bicarbonate.html">Bicarbonate</a>
+<a href="servette.html">Servette</a>
+</div>
+
+<div class="menu-bottom">
+<a href="contact.html">Contact Us</a>
+<a href="about.html">About Us</a>
+</div>
+
+</div>
+
+<header>
+
+<img src="images/logo.jpg" class="logo">
+<h1>Syphax Product - Premium Distribution</h1>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+<img src="images/mouchoir.png" class="product-img">
+<h2>Mouchoir Simple</h2>
+<a href="mouchoir.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/premuim.png" class="product-img">
+<h2>Mouchoir Premium</h2>
+<a href="premium.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/300.jpeg" class="product-img">
+<h2>mouchoir 300</h2>
+<a href="300.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/1kg super.jpeg" class="product-img">
+<h2>Souloufane</h2>
+<a href="souloufane.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/50m b.png" class="product-img">
+<h2>Papier Cuisson</h2>
+<a href="cuisson.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/vol.jpeg" class="product-img">
+<h2>Vinaigre</h2>
+<a href="vinaigre.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/500g.jpeg" class="product-img">
+<h2>Bicarbonate</h2>
+<a href="bicarbonate.html" class="btn">Voir</a>
+</div>
+
+<div class="card">
+<img src="images/servette.jpeg" class="product-img">
+<h2>Servette</h2>
+<a href="servette.html" class="btn">Voir</a>
+</div>
+
+</div>
+
+<div class="location">
+<h2>Localisation</h2>
+
+<iframe src="https://maps.google.com/maps?q=33.584068,-7.488816&z=15&output=embed"></iframe>
+
+<br>
+
+<a class="map-btn" target="_blank"
+href="https://www.google.com/maps/place/33%C2%B035'02.6%22N+7%C2%B029'19.7%22W">
+Location on Google Map
+</a>
+
+</div>
+
+<div class="contact">
+<h2>Contact</h2>
+<a class="whatsapp" href="https://wa.me/212600020064">WhatsApp</a>
+<a class="gmail" href="mailto:kadazghar@gmail.com">Gmail</a>
+<a class="facebook" href="https://web.facebook.com/profile.php?id=61579382245233">Facebook</a>
+<a class="instagram" href="https://www.instagram.com/syphaxmaroc/">Instagram</a>
+</div>
+
+<footer>
+© 2026 SYPHAX
+</footer>
+
+<script>
+function toggleMenu(){
+document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
